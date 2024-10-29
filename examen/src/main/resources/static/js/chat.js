@@ -7,6 +7,7 @@ socket.onopen = function(event) {
 socket.onmessage = function(event) {
     let messageArea = document.getElementById("messageArea");
     let messageDiv = document.createElement("div");
+	messageDiv.className = "flex border border-black justify-start w-64 rounded-md"
     messageDiv.textContent = event.data;
 
     messageArea.appendChild(messageDiv);
