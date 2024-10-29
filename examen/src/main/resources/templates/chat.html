@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body>
+	    <div class="container mt-5">
+	        <h2 class="text-center">Chat en Vivo</h2>
+	        <div class="card">
+	            <div class="card-body">
+	                <div class="messageArea d-flex flex-column" id="messageArea"></div> 
+	                
+	                <div class="mb-3">
+	                    <label for="username" class="form-label">Nombre de usuario:</label>
+	                    <input type="text" class="form-control" id="username" placeholder="Introduce tu nombre" required>
+	                </div>
+	                
+	                <div class="mb-3">
+	                    <label for="messageInput" class="form-label">Mensaje:</label>
+	                    <input type="text" class="form-control" id="messageInput" placeholder="Introduce tu mensaje" required>
+	                </div>
+	                
+	                <button onclick="sendMessage()" class="btn btn-primary mt-3">Enviar</button>
+	                <button onclick="clearMessages()" class="btn btn-danger mt-3">Borrar Todos los Mensajes</button>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <script src="js/chat.js"></script>
+	</body>	
+</html>
