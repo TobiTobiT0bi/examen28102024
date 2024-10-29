@@ -3,7 +3,6 @@ package com.teruel.examen.service;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -32,9 +31,7 @@ public class ChatHandler extends TextWebSocketHandler {
 	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		// TODO Auto-generated method stub
-		messages.add(message);
-		
+		// TODO Auto-generated method stub	
 		if(message.getPayload().toString().contains("websocket")) {
 			session.sendMessage(new TextMessage(""
 					+ "WebSocket es un protocolo de comunicación que permite la comunicación bidireccional entre un cliente (por ejemplo, un navegador web) "
@@ -48,10 +45,11 @@ public class ChatHandler extends TextWebSocketHandler {
 					+ "Puerto 80: Para conexiones WebSocket sin cifrar (ws://).\r\n"
 					+ "Puerto 443: Para conexiones WebSocket cifradas (wss://).\r\n"
 					+ ""));
+		} else {
+			messages.add(message);
+			for (WebSocketSession webSocketSession : sessions) {
+	            webSocketSession.sendMessage(message);
+	        }
 		}
-		
-		for (WebSocketSession webSocketSession : sessions) {
-            webSocketSession.sendMessage(message);
-        }
 	}
 }
